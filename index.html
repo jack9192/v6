@@ -39,6 +39,28 @@
             z-index: -1; 
             }
 
+      
+       #typing-text {
+    font-size: 65px;
+    text-align: center;
+    font-weight: 1000;
+    color: #fff;
+  }
+
+  .cursor {
+    color: #C93131;
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+  }
+
+  .highlight {
+    color: #C93131;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
     </style>
 </head>
 <body>
@@ -73,14 +95,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <br><br><br><br><br><br><br><br><br>
 
-    <h1>The Next Generation<br><span style="color: #fff;"><span style="color: #C93131;">Of Unblocked Games Sites.</span></span></h1>
+   <h1 id="typing-text"></h1>
     <p>PLEXILE ARCADE Is Associated with PLEXILE Network & Is an Unblocked Arcade Website. It was also founded on August 9th, 2023.</p>
 
     <div class="button-container">
         <a href="/games.html" class="play-button">Play Now!</a>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
 
     <div class="features-section">
         <div class="feature-box">
@@ -119,6 +141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   Join Discord!
     </div> 
 
+  
     <!-- Scripts -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1640934413378596"
      crossorigin="anonymous"></script>
@@ -145,5 +168,41 @@ document.write("<sc"+"ript src='//js.adforgames.com/cd.js'></sc"+"ript>");</scri
     <script src="/js/settings/panic.js"></script>
     <script src="/js/settings/mobile.js"></script>
     <script src="/js/settings/themes.js" defer></script>
+
+  <!-- Cloudflare Pages Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bb89497de11044e7bf0108f2bebfa6c6"}'></script><!-- Cloudflare Pages Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8db0208cbe482c9d","version":"2024.10.4","r":1,"token":"4010d636974747ce9ff6544ef81e1c21","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const part1 = "The Next Generation";
+  const part2 = "Of Unblocked Games Sites.";
+  const typingText = document.getElementById("typing-text");
+  const cursor = '<span class="cursor">|</span>';
+  
+  let index = 0;
+  let fullText = part1 + "\n" + part2;
+
+  function typeText() {
+
+    if (index <= part1.length) {
+      typingText.innerHTML = fullText.slice(0, index) + cursor;
+    } else {
+
+      typingText.innerHTML = `${part1}<br><span class="highlight">${fullText.slice(part1.length + 1, index)}</span>${cursor}`;
+    }
+    
+    index++;
+    
+    if (index <= fullText.length) {
+      setTimeout(typeText, 95); 
+    } else {
+
+      typingText.innerHTML = `${part1}<br><span class="highlight">${part2}</span>${cursor}`;
+    }
+  }
+
+  typeText();
+});
+
+</script>
 </body>
 </html>
