@@ -1,74 +1,56 @@
 // True Fact: This SHI TOOK ME 3 STRAIGHT HOURS OF TORTURE TO FINALLY GET IT TO WORK!
-var url = "/";  
-var win;
-var autoAboutBlankEnabled = false; 
+    let aboutBlankOpened = false;
 
-function openWindow() {
-    if (win && !win.closed) {
-        win.focus();
-    } else {
-        win = window.open('', '_blank');
-        win.document.body.style.margin = '0';
-        win.document.body.style.height = '100vh';
-        var iframe = win.document.createElement('iframe');
-        iframe.style.border = 'none';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.src = url;
-        win.document.body.appendChild(iframe);
+    function isAboutBlankEnabled() {
+        return localStorage.getItem("aboutBlank") === "enabled";
     }
-}
 
-if (window.location.href === 'about:blank') {
-    autoAboutBlankEnabled = false; 
-}
-
-if (localStorage.getItem('autoAboutBlankEnabled') === 'true') {
-    autoAboutBlankEnabled = true; 
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    let ctrlAPressed = false;
-    let ctrlBPressed = false;
-
-    document.addEventListener('keydown', function(event) {
-        if (event.ctrlKey) {
-            if (event.key === 'a') {
-                ctrlAPressed = true;
-                event.preventDefault();
-            }
-
-            if (event.key === 'b') {
-                ctrlBPressed = true;
-                event.preventDefault();
-            }
-
-            if (ctrlAPressed && ctrlBPressed) {
-                autoAboutBlankEnabled = !autoAboutBlankEnabled;
-
-                if (autoAboutBlankEnabled) {
-                    localStorage.setItem('autoAboutBlankEnabled', 'true');
-                    alert("Auto About:Blank Enabled");
-                } else {
-                    localStorage.removeItem('autoAboutBlankEnabled'); 
-                    alert("Auto About:Blank Disabled");
-                }
-                ctrlAPressed = false;
-                ctrlBPressed = false;
-            }
+    function toggleAboutBlankSetting() {
+        if (isAboutBlankEnabled()) {
+            localStorage.setItem("aboutBlank", "disabled");
+            window.location.href = "/index.html";  
+        } else {
+            localStorage.setItem("aboutBlank", "enabled");
+            openAboutBlank();
         }
+    }
 
-        if (!event.ctrlKey) {
-            ctrlAPressed = false;
-            ctrlBPressed = false;
+    function openAboutBlank() {
+        
+        if (aboutBlankOpened || window.location.href === "about:blank" || window !== window.top) return;
+        
+        aboutBlankOpened = true;
+
+        window.open("https://www.google.com/search?q=School&oq=School+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDsyBggDEEUYPDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIMjcwNGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8", "_blank");
+
+        const popup = open("about:blank", "_blank");
+        if (!popup || popup.closed) {
+            alert("Failed to cloak this site. Allow popups and try again.");
+        } else {
+            const doc = popup.document;
+            const iframe = doc.createElement("iframe");
+            iframe.src = location.href;
+            Object.assign(iframe.style, {
+                position: "fixed",
+                top: "0", left: "0", width: "100%", height: "100%",
+                border: "none", margin: "0", padding: "0", overflow: "hidden"
+            });
+            doc.body.appendChild(iframe);
+            location.replace("about:blank");
+        }
+    }
+
+    document.addEventListener("keydown", function(event) {
+        if (event.ctrlKey && event.key === "a") {
+            document.addEventListener("keydown", function(eventB) {
+                if (eventB.key === "b") {
+                    toggleAboutBlankSetting();
+                }
+            }, { once: true });
         }
     });
 
-    if (autoAboutBlankEnabled && window.location.href !== 'about:blank') {
-        
-        if (!win || win.closed) {
-            openWindow();
-            window.location.href = "https://www.google.com/search?q=schoology"; 
-        }
+    if (isAboutBlankEnabled()) {
+        openAboutBlank();
+        document.getElementById("autoAboutBlankToggle").checked = true; 
     }
-});
