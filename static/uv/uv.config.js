@@ -1,6 +1,6 @@
 self.__uv$config = {
   prefix: '/static/pa/',
-  bare: 'https://pabare.stofcheck-ballinger.com/seal/',  
+  bare: 'https://pabare.laviewddns.com/seal/',  
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: '/static/uv/uv.handler.js',
