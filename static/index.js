@@ -48,7 +48,7 @@ function search(input, searchEngineURL) {
     url = searchEngineURL.replace("%s", encodeURIComponent(input));
     console.log("Search URL:", url);
   } else {
-    
+   
     if (!(input.startsWith("https://") || input.startsWith("http://"))) {
       url = "https://" + input;
     } else {
