@@ -89,13 +89,12 @@ form.addEventListener("submit", async (event) => {
   try {
     await registerSW();
   } catch (err) {
-    return; // If service worker fails, stop here
+    return; 
   }
 
   const url = search(address.value.trim(), searchEngine.value);
   const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
   console.log("Encoded URL:", encodedUrl);
 
-  // Here, instead of redirecting in the iframe, we tell the parent window to redirect
   window.parent.location.href = "/static/edu.html?url=" + encodeURIComponent(encodedUrl);
 });
