@@ -9,15 +9,13 @@
   <iframe id="iframeId" width="100%" height="100%"></iframe>
 
   <script>
+    // Get the encoded URL from the query string
     const urlParams = new URLSearchParams(window.location.search);
     const encodedUrl = urlParams.get('url');
 
     if (encodedUrl) {
       const iframe = document.getElementById("iframeId");
-      iframe.src = decodeURIComponent(encodedUrl);
-      
-      const cleanUrl = window.location.pathname; 
-      window.history.replaceState({}, document.title, cleanUrl); 
+      iframe.src = encodedUrl; // Set the iframe's source to the encoded URL
     } else {
       document.body.innerHTML = "<p>Error: No URL found to load.</p>";
     }
