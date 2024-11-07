@@ -92,5 +92,5 @@ form.addEventListener("submit", async (event) => {
   console.log("Encoded URL:", encodedUrl);
 
   // Here, instead of redirecting in the iframe, we tell the parent window to redirect
-  window.parent.location.href = "/edu.html?url=" + encodeURIComponent(encodedUrl);
+  window.parent.location.href = "/static/edu.html?url=" + encodeURIComponent(encodedUrl);
 });
