@@ -39,13 +39,16 @@ async function registerSW() {
 /**
  * Function to determine whether input is a valid URL or a search query.
  * @param {string} input
- * @param {string} searchEngineURL
  * @returns {string} Formatted URL
  */
 function search(input, searchEngineURL) {
   let url;
 
-  if (isUrl(input)) {
+  if (!isUrl(input)) {
+   
+    url = searchEngineURL.replace("%s", encodeURIComponent(input));
+    console.log("Search URL:", url);
+  } else {
    
     if (!(input.startsWith("https://") || input.startsWith("http://"))) {
       url = "https://" + input;
@@ -53,10 +56,6 @@ function search(input, searchEngineURL) {
       url = input;
     }
     console.log("Entered URL:", url);
-  } else {
- 
-    url = searchEngineURL.replace("%s", encodeURIComponent(input));
-    console.log("Search URL:", url);
   }
 
   return url;
@@ -92,8 +91,7 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  const searchEngineURL = searchEngine.value || "https://www.google.com/search?q=%s"; 
-  const url = search(address.value.trim(), searchEngineURL);
+  const url = search(address.value.trim(), searchEngine.value);
   const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
   console.log("Encoded URL:", encodedUrl);
 
