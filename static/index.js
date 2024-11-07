@@ -44,11 +44,9 @@ async function registerSW() {
 function search(input, searchEngineURL) {
   let url;
   if (!isUrl(input)) {
- 
     url = searchEngineURL.replace("%s", encodeURIComponent(input));
     console.log("Search URL:", url);
   } else {
-   
     if (!(input.startsWith("https://") || input.startsWith("http://"))) {
       url = "https://" + input;
     } else {
@@ -86,13 +84,13 @@ form.addEventListener("submit", async (event) => {
   try {
     await registerSW();
   } catch (err) {
-    return; 
+    return; // If service worker fails, stop here
   }
 
   const url = search(address.value.trim(), searchEngine.value);
   const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
   console.log("Encoded URL:", encodedUrl);
 
-  sessionStorage.setItem("ur", encodedUrl);
-  location.href = "/static/edu.html";
+  // Here, instead of redirecting in the iframe, we tell the parent window to redirect
+  window.parent.location.href = "/edu.html?url=" + encodeURIComponent(encodedUrl);
 });
