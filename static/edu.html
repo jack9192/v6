@@ -9,7 +9,8 @@
   <iframe id="iframeId" width="100%" height="100%"></iframe>
 
   <script>
-    const encodedUrl = sessionStorage.getItem("ur");
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedUrl = urlParams.get('url');
 
     if (encodedUrl) {
       const iframe = document.getElementById("iframeId");
