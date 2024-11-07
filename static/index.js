@@ -43,10 +43,14 @@ async function registerSW() {
  */
 function search(input, searchEngineURL) {
   let url;
+
+  // Check if the input is a valid URL
   if (!isUrl(input)) {
+    // If not a URL, treat as search query
     url = searchEngineURL.replace("%s", encodeURIComponent(input));
     console.log("Search URL:", url);
   } else {
+    // If it is a URL, make sure it has the correct protocol (https://)
     if (!(input.startsWith("https://") || input.startsWith("http://"))) {
       url = "https://" + input;
     } else {
@@ -54,6 +58,7 @@ function search(input, searchEngineURL) {
     }
     console.log("Entered URL:", url);
   }
+
   return url;
 }
 
