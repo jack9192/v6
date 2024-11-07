@@ -39,18 +39,16 @@ async function registerSW() {
 /**
  * Function to determine whether input is a valid URL or a search query.
  * @param {string} input
- * @param {string} searchEngineURL
  * @returns {string} Formatted URL
  */
 function search(input, searchEngineURL) {
   let url;
-
   if (!isUrl(input)) {
-    // If it's not a URL, create a search URL using the search engine template
+    
     url = searchEngineURL.replace("%s", encodeURIComponent(input));
     console.log("Search URL:", url);
   } else {
-    // Otherwise, it's a URL, make sure it has http:// or https://
+  
     if (!(input.startsWith("https://") || input.startsWith("http://"))) {
       url = "https://" + input;
     } else {
@@ -58,7 +56,6 @@ function search(input, searchEngineURL) {
     }
     console.log("Entered URL:", url);
   }
-
   return url;
 }
 
@@ -92,16 +89,10 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  // Retrieve the search engine URL from the hidden input field
-  const searchEngineURL = searchEngine.value;
-
-  // Call the search function to handle URL or search query
-  const url = search(address.value.trim(), searchEngineURL);
-
-  // Encode the final URL using the __uv$config.encodeUrl method
+  const url = search(address.value.trim(), searchEngine.value);
   const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
   console.log("Encoded URL:", encodedUrl);
 
-  // Redirect to the edu.html page with the encoded URL as a query parameter
-  window.parent.location.href = "/static/edu.html?url=" + encodeURIComponent(encodedUrl);
+  sessionStorage.setItem("ur", encodedUrl);
+  location.href = "/static/edu.html";
 });
