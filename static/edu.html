@@ -306,17 +306,21 @@ document.querySelectorAll('a').forEach(link => {
   });
 });
 </script>
-<script><script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const encodedUrl = urlParams.get('url');
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const encodedUrl = urlParams.get('url');
+  
+  if (encodedUrl) {
 
-    if (encodedUrl) {
-      const iframe = document.getElementById("iframeId");
-      iframe.src = encodedUrl;
-    } else {
-      document.body.innerHTML = "<p>Error: No URL found to load.</p>";
-    }
-  </script></script>
+    const decodedUrl = decodeURIComponent(encodedUrl);
+    
+    document.querySelector('iframe').src = decodedUrl;
+  } else {
+   
+    console.error("No URL parameter found!");
+  }
+</script>
+
 
     <!-- Scripts -->
     <script src="/js/main.js"></script>
