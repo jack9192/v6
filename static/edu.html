@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxied Page</title>
+</head>
+<body>
+  <iframe id="iframeId" width="100%" height="100%"></iframe>
+
+  <script>
+    const encodedUrl = sessionStorage.getItem("ur");
+
+    if (encodedUrl) {
+      const iframe = document.getElementById("iframeId");
+      iframe.src = encodedUrl; 
+    } else {
+      document.body.innerHTML = "<p>Error: No URL found to load.</p>";
+    }
+  </script>
+</body>
+</html>
