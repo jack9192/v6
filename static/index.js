@@ -95,5 +95,5 @@ form.addEventListener("submit", async (event) => {
   const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
   console.log("Encoded URL:", encodedUrl);
 
-  window.parent.location.href = "/static/edu.html?url=" + encodeURIComponent(encodedUrl);
+window.parent.location.href = "/static/edu.html?url=" + encodeURIComponent(encodedUrl);
 });
