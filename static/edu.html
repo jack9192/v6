@@ -1,24 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proxied Page</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLEXILE ARCADE | Search</title>
+    <link rel="manifest" href="/manifest.json"/>
+    <link rel="icon" type="image/png" href="/images/plexilearcade.png">
+    <link rel="shortcut icon" href="/images/plexilearcade.png" />
+    <meta property="og:title" content="PLEXILE ARCADE">
+    <meta name="theme-color" content="#C93131">
+    <meta name="msapplication-TileColor" content="#C93131">
+    <meta property="og:image" content="/images/plexilearcade.png">
+    <meta name="description" content="The Next Generation Of Unblocked Sites...">
+    <meta property="og:description" content="The Next Generation Of Unblocked Sites...">
+    <link rel="icon" type="image/png" href="/images/plexilearcade.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/edu.css">
+    <link rel="stylesheet" href="/css/loader.css">
+
 <body>
-  <iframe id="iframeId" width="100%" height="100%"></iframe>
+<html>
 
-  <script>
-    // Get the encoded URL from sessionStorage
-    const encodedUrl = sessionStorage.getItem("ur");
+<iframe id="iframeId" width="100%" height="100%"></iframe>
 
-    if (encodedUrl) {
-      const iframe = document.getElementById("iframeId");
-      iframe.src = encodedUrl; // Set the iframe's source to the encoded URL
-    } else {
-      document.body.innerHTML = "<p>Error: No URL found to load.</p>";
-    }
-  </script>
+<center>
+  <div class="iframebox2">
+        <div class="icon-container">
+      <i class="bx bx-search searchh-icon" title="Search" onclick="openSearch()"></i>
+      <i class="bx bx-fullscreen fullscreen-icon" title="Fullscreen" onclick="goFullscreen()"></i>
+          <div class="icon-container2">
+      <i class="bx bx-code-alt inspect-icon" title="Inspect" onclick="erudaToggle()"></i>
+    </div>
+  </div>
+</center>
+
+<div id="searchOverlay">
+  <button id="closeOverlayBtn" class="close-btn">X</button>
+  <center>
+    <form id="uv-form">
+      <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/>
+      <input id="uv-address" class="search-bar" type="text" placeholder="Search Google or type a URL" />
+    </form>
+  </center>
+</div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/edu.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="/js/highlight.js" defer></script>
+    <script src="/js/time.js" defer></script>
+    <script src="/js/shortcuts.js" defer></script>
+
+    <!-- Settings Scripts -->
+    <script src="/js/settings/anticlosing.js"></script>
+    <script src="/js/settings/clickoffcloaking.js"></script>
+    <script src="/js/settings/tabcloak.js" defer></script>
+    <script src="/js/settings/panic.js"></script>
+    <script src="/js/settings/mobile.js"></script>
+    <script src="/js/settings/themes.js" defer></script>
+        
+    <!--Ultraviolet scripts-->
+    <script src="/static/uv/uv.bundle.js" defer></script>
+    <script src="/static/uv/uv.config.js" defer></script>
+    <script src="/static/register-sw.js" defer></script>
+    <script src="/static/search.js" defer></script>
+    <script src="/static/index.js" defer></script>
+    <script src="/static/error.js" defer></script>
+    <script src="/static/block.js"></script>
+    <script src="/static/uv/bare.js" defer></script>
+  
 </body>
 </html>
-
