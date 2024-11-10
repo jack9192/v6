@@ -4,7 +4,7 @@
   </kbd>
 </p>
 
-<p align="center">PLEXILE ARCADE, The Next Generation Of <strong>Unblocked</strong> Games..</p>
+<p align="center"><strong>PLEXILE ARCADE</strong>, The Next Generation Of <strong>Unblocked</strong> Games..</p>
 
 ---
 
