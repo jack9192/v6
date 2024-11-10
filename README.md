@@ -12,7 +12,7 @@
 
 **PLEXILE ARCADE** is a Unblocked Game Website with Games, Apps, & A Proxy. It is Developed and Owned by [PLEXILE Network](https://github.com/PLEXILENetwork).
 
-![PLEXILE ARCADE Demo](/images/PLEXILEARCADEGIF.gif)
+![PLEXILE ARCADE Demo](/images/PLEXILEARCADE.gif)
 
 ## Hosting
 
